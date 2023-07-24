@@ -1,4 +1,4 @@
-# stalgcm-mp
+# stalgcm-abstractmodel
 STALGCM Machine Project: Abstract Model of Computation
 
 A software implementation of a 2-way deterministic finite accepter.
