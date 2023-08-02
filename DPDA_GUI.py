@@ -10,6 +10,12 @@ class DPDA_GUI:
         # Create file button and label
         file_button = tk.Button(self.window, text="Select DPDA file", command=self.select_file)
         file_button.grid(row=0, column=0, padx=5, pady=5)
+        
+        definition_label = tk.Label(self.window, text="DPDA Definition:")
+        definition_label.grid(row=0, column=1, padx=5, pady=5, sticky="S")
+
+        self.dpda_text = tk.Text(self.window, height=15, width=30)
+        self.dpda_text.grid(row=1, column=1, rowspan=8, padx=5, pady=5, sticky="N")
 
         self.file_label = tk.Label(self.window, text="")
         self.file_label.grid(row=1, column=0, padx=5, pady=5)
@@ -82,8 +88,14 @@ class DPDA_GUI:
         self.dpda_text.insert(tk.END, "Start stack symbol: " + start_stack_symbol + "\n")
         self.dpda_text.insert(tk.END, "Accept states: " + ', '.join(accept_states) + "\n")
         self.dpda_text.insert(tk.END, "Transitions:\n")
+        # for transition, new_state in transitions.items():
+        #     self.dpda_text.insert(tk.END, ','.join(transition) + ',' + ','.join(new_state) + "\n")
+        
+        # print(transitions.items())
+            
         for transition, new_state in transitions.items():
-            self.dpda_text.insert(tk.END, ','.join(transition) + ',' + ','.join(new_state) + "\n")
+            formatted_transition = f"({transition[0]}, {transition[1]}) = ({new_state[0]}, {new_state[1]}, {new_state[2]})"
+            self.dpda_text.insert(tk.END, formatted_transition + "\n")
 
     def accept_input(self):
         # Run DPDA on input string
@@ -116,9 +128,6 @@ class DPDA_GUI:
         self.trace_text.delete(1.0, tk.END)
 
     def run(self):
-        self.dpda_text = tk.Text(self.window, height=10, width=50)
-        self.dpda_text.grid(row=0, column=1, rowspan=8, padx=5, pady=5)
-
         self.window.mainloop()
         
 gui = DPDA_GUI()
