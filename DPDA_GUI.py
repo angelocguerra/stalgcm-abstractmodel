@@ -94,7 +94,8 @@ class DPDA_GUI:
         # print(transitions.items())
             
         for transition, new_state in transitions.items():
-            formatted_transition = f"({transition[0]}, {transition[1]}) = ({new_state[0]}, {new_state[1]}, {new_state[2]})"
+            #                          current_state,   input_symbol,   pop_symbol      =   new_state    ,  push_symbol
+            formatted_transition = f"({transition[0]}, {transition[1]}, {new_state[1]}) = ({new_state[0]}, {new_state[2]})"
             self.dpda_text.insert(tk.END, formatted_transition + "\n")
 
     def accept_input(self):
