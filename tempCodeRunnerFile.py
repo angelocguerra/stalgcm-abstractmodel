@@ -1,1 +1,1 @@
-        # print(transitions.items())
+print(current_state, input_symbol)

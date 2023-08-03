@@ -42,8 +42,8 @@ class DPDA_GUI:
         self.trace_text.grid(row=7, column=0, padx=5, pady=5)
 
         # Create accept button
-        accept_button = tk.Button(self.window, text="Accept", command=self.accept_input)
-        accept_button.grid(row=8, column=0, padx=5, pady=5)
+        check_button = tk.Button(self.window, text="Check", command=self.accept_input)
+        check_button.grid(row=8, column=0, padx=5, pady=5)
 
         # Create reset button
         reset_button = tk.Button(self.window, text="Reset", command=self.reset_input)
@@ -74,8 +74,8 @@ class DPDA_GUI:
             input_symbol = parts[1]
             stack_symbol = parts[2]
             new_state = parts[3]
-            new_stack_symbol = parts[4]
-            transitions[(current_state, input_symbol)] = (new_state, stack_symbol, new_stack_symbol)
+            push_symbol = parts[4]
+            transitions[(current_state, input_symbol)] = (new_state, stack_symbol, push_symbol)
 
         self.dpda = DPDA(states, input_alphabet, stack_alphabet, transitions, start_state, start_stack_symbol, accept_states)
 

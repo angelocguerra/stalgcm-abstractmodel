@@ -13,29 +13,44 @@ class DPDA:
         current_state = self.start_state
         trace = [(current_state, input_string, stack[:])]
 
-
         for input_symbol in input_string:
-            # print(input_symbol)
 
             if (current_state, input_symbol) not in self.transitions:
-                # print(current_state, input_symbol, self.transitions)
+                print("false")
                 return False, trace
-            new_state, stack_symbol, new_stack_symbol = self.transitions[(current_state, input_symbol)]
-            if stack_symbol != '':
+            new_state, pop_symbol, push_symbol = self.transitions[(current_state, input_symbol)]
+            if pop_symbol != '':
                 stack.pop()
-            if new_stack_symbol != '':
-                stack.extend(list(new_stack_symbol)[::-1])
+            if push_symbol != '':
+                stack.extend(list(push_symbol)[::-1])
             current_state = new_state
             trace.append((current_state, input_string, stack[:]))
             # print(trace)
-
+            
+            
+        if input_string == '':
+            input_symbol = ''
+            while (current_state, input_symbol) in self.transitions:
+                if (current_state, input_symbol) not in self.transitions:
+                    print("false")
+                    return False, trace
+                new_state, pop_symbol, push_symbol = self.transitions[(current_state, input_symbol)]
+                if pop_symbol != '':
+                    stack.pop()
+                if push_symbol != '':
+                    stack.extend(list(push_symbol)[::-1])
+                current_state = new_state
+                trace.append((current_state, input_string, stack[:]))
+                # print(trace)
+            
         if stack and stack[-1] == 'Z':
             input_symbol = ''
-            new_state, stack_symbol, new_stack_symbol = self.transitions[(current_state, input_symbol)]
+            new_state, pop_symbol, push_symbol = self.transitions[(current_state, input_symbol)]
             stack.pop()
             current_state = new_state
             trace.append((current_state, input_string, stack[:]))
 
+        print("current: "+current_state)
         result = current_state in self.accept_states and len(stack) == 0
         # print(result, trace)
         return result, trace
@@ -57,10 +72,10 @@ class DPDA:
 #     parts = line.strip().split(',')
 #     current_state = parts[0]
 #     input_symbol = parts[1]
-#     stack_symbol = parts[2]
+#     pop_symbol = parts[2]
 #     new_state = parts[3]
-#     new_stack_symbol = parts[4]
-#     transitions[(current_state, input_symbol)] = (new_state, stack_symbol, new_stack_symbol)
+#     push_symbol = parts[4]
+#     transitions[(current_state, input_symbol)] = (new_state, pop_symbol, push_symbol)
 # dpda = DPDA(states, input_alphabet, stack_alphabet, transitions, start_state, start_stack_symbol, accept_states)
 # # Prompt user for input string0
 # input_string = input("Enter input string: ")
