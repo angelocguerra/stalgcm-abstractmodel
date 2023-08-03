@@ -6,26 +6,26 @@ A python implementation of a Deterministic Pushdown Automata.
 To run, simply open up the **DPDA_GUI.py** file and run said file. 
 
 The program requires a text file that contains a machine definition. The machine definition should have the following format:
-{states}
-{input symbols}
-{stack symbols}
-{start state}
-{initial stack symbol}
-{final state}
-{transitions}
+{states}\
+{input symbols}\
+{stack symbols}\
+{start state}\
+{initial stack symbol}\
+{final state}\
+{transitions}\
 
 Everything with multiple values should be comma separated. Moreover, each transition must be written in the format of *\<current state\>,\<input symbol\>,\<pop symbol\>,\<next state\>,\<push symbol\>*. For any lambda transitions or values, simply do not type anything after the comma. An example has been provided below.
 
-q0,q1,q2        *// states*
-0,1             *// input symbols*
-Z,X             *// stack symbols*
-q0              *// start state*
-Z               *// initial stack symbol*
-q2              *// final state*
-q0,0,,q0,X      *// first transition*
-q0,1,X,q1,      *// commas with no character after it indicate that the 'character' is lambda*
-q1,1,X,q1,
-q1,,Z,q2,      
+q0,q1,q2        *// states*\
+0,1             *// input symbols*\
+Z,X             *// stack symbols*\
+q0              *// start state*\
+Z               *// initial stack symbol*\
+q2              *// final state*\
+q0,0,,q0,X      *// first transition*\
+q0,1,X,q1,      *// commas with no character after it indicate that the 'character' is lambda*\
+q1,1,X,q1,\
+q1,,Z,q2,\
 
 ...
 
