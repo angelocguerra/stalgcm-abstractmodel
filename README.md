@@ -14,7 +14,7 @@ The program requires a text file that contains a machine definition. The machine
 {final state}
 {transitions}
 
-Everything with multiple values should be comma separated. Moreover, each transition must be written in the format of *<current state>,<input symbol>,<pop symbol>,<next state>,<push symbol>*. For any lambda transitions or values, simply do not type anything between the commas. An example has been provided below.
+Everything with multiple values should be comma separated. Moreover, each transition must be written in the format of *\<current state\>,\<input symbol\>,\<pop symbol\>,\<next state\>,\<push symbol\>*. For any lambda transitions or values, simply do not type anything after the comma. An example has been provided below.
 
 q0,q1,q2        *// states*
 0,1             *// input symbols*
