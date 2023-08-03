@@ -16,7 +16,7 @@ class DPDA:
         for input_symbol in input_string:
 
             if (current_state, input_symbol) not in self.transitions:
-                print("false")
+                # print("false")
                 return False, trace
             new_state, pop_symbol, push_symbol = self.transitions[(current_state, input_symbol)]
             if pop_symbol != '':
@@ -32,7 +32,7 @@ class DPDA:
             input_symbol = ''
             while (current_state, input_symbol) in self.transitions:
                 if (current_state, input_symbol) not in self.transitions:
-                    print("false")
+                    # print("false")
                     return False, trace
                 new_state, pop_symbol, push_symbol = self.transitions[(current_state, input_symbol)]
                 if pop_symbol != '':
@@ -43,17 +43,19 @@ class DPDA:
                 trace.append((current_state, input_string, stack[:]))
                 # print(trace)
             
-        if stack and stack[-1] == 'Z':
+        if stack and stack[-1] == self.start_stack_symbol:
             input_symbol = ''
             new_state, pop_symbol, push_symbol = self.transitions[(current_state, input_symbol)]
             stack.pop()
             current_state = new_state
             trace.append((current_state, input_string, stack[:]))
 
-        print("current: "+current_state)
+        # print("current: " + current_state)
         result = current_state in self.accept_states and len(stack) == 0
         # print(result, trace)
         return result, trace
+
+# For testing back-end logic
 
 # # Read DPDA definition from file
 # filename = "dpda2.txt"
