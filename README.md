@@ -12,18 +12,18 @@ The program requires a text file that contains a machine definition. The machine
 {start state}\
 {initial stack symbol}\
 {final state}\
-{transitions}\
+{transitions}
 
 Everything with multiple values should be comma separated. Moreover, each transition must be written in the format of *\<current state\>,\<input symbol\>,\<pop symbol\>,\<next state\>,\<push symbol\>*. For any lambda transitions or values, simply do not type anything after the comma. An example has been provided below.
 
-q0,q1,q2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*// states*\
-0,1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*// input symbols*\
-Z,X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*// stack symbols*\
-q0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*// start state*\
-Z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*// initial stack symbol*\
-q2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*// final state*\
-q0,0,,q0,X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*// first transition*\
-q0,1,X,q1,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*// commas with no character after it indicate that the 'character' is lambda*\
+q0,q1,q2\
+0,1\
+Z,X\
+q0\
+Z\
+q2\
+q0,0,,q0,X
+q0,1,X,q1,\
 q1,1,X,q1,\
 q1,,Z,q2,
 
