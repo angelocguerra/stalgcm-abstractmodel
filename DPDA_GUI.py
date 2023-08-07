@@ -1,3 +1,14 @@
+# Deterministic Pushdown Automata (DPDA) - Python Implementation
+# 
+# Authors:
+# - GUERRA, Angelo     (12182346)
+# - WONG, Krizchelle   (12118524)
+# - YUNG CHENG, Adrian (12119873)
+# 
+# Course: STALGCM
+# Section: S11
+# Last Updated: August 7, 2023
+
 import tkinter as tk
 from tkinter import filedialog
 from DPDA import DPDA
